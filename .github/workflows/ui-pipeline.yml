@@ -3,7 +3,7 @@ name: UI Build and Dockerize
 on:
   push:
     branches:
-      - 'feature/**'     # Runs on any feature branch push
+      - 'feature-**'     # Runs on any feature branch push
       - 'master'         # Also runs when code is merged to master
   pull_request:
     branches:
