@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+paste below content  in  file -> .git/hooks/pre-commit  to restrict any direct commit in master from local. on git also rules are there so that no one ca directly commit on master branch
+#!/bin/sh
+branch="$(git symbolic-ref --short HEAD)"
+if [ "$branch" = "master" ]; then
+  echo "⛔️ You cannot commit directly to the master branch."
+  exit 1
+fi
+
+
 ## Available Scripts
 
 In the project directory, you can run:
