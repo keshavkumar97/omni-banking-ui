@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Loads Tailwind’s default styles (reset + utilities) into your app. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
