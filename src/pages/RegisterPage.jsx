@@ -1,6 +1,7 @@
 import FormInput from "../components/FormInput";
 import FormButton from "../components/FormButton";
 import { useState } from "react";
+import registerUser from "../api/auth";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,28 @@ const RegisterPage = () => {
     }));
   };
 
-  console.log(formData.username);
+  // console.log(formData.username);
+  console.log(process.env.REACT_APP_AUTH_API_BASE_URL)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Password do not match!");
+      return;
+    }
+
+    try {
+      const response = await registerUser({
+        username: formData.username,
+        password: formData.password,
+      });
+      if (response.status === 200) {
+        alert("Registration Success with ok 200");
+      }
+      alert("Registration Success");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="min-h-screen flex">
@@ -31,7 +53,10 @@ const RegisterPage = () => {
 
       {/* Right side: 45% */}
       <div className="w-[45%] bg-gray-100 flex items-center justify-center">
-        <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-md space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-8 rounded-lg shadow-md w-full max-w-md space-y-4"
+        >
           <h2 className="text-2xl font-bold text-center text-gray-800">
             Create Account
           </h2>
