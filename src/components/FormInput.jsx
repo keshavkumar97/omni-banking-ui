@@ -1,12 +1,18 @@
-const FormInput = ({ type, placeholder, value, onChange }) => {
+const FormInput = ({ type, name, placeholder, value, onChange }) => {
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      className="input"
-    />
+    <>
+      <div className="form-group">
+        {name && <label className="label" htmlFor={name}>{name[0].toUpperCase() + name.slice(1)}</label>}
+        <input
+          type={type}
+          id={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className="input"
+        />
+      </div>
+    </>
   );
 };
 
