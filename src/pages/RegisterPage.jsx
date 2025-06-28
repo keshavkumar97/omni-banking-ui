@@ -1,7 +1,7 @@
 import FormInput from "../components/FormInput";
 import FormButton from "../components/FormButton";
 import { useState } from "react";
-import registerUser from "../api/auth";
+import { registerUser } from "../api/auth";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const RegisterPage = () => {
   };
 
   // console.log(formData.username);
-  console.log(process.env.REACT_APP_AUTH_API_BASE_URL)
+  // console.log(process.env.REACT_APP_AUTH_API_BASE_URL)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,12 +32,15 @@ const RegisterPage = () => {
         userName: formData.username,
         password: formData.password,
       });
-      if (response.status === 200) {
-        alert("Registration Success with ok 200");
-      }
+
       alert("Registration Success");
     } catch (error) {
       console.log(error);
+      alert(
+        `All Registration Fields are Mandatory! \n${
+          erro?.response?.data?.message || "Something went wrong!"
+        }`
+      );
     }
   };
 
@@ -66,21 +69,21 @@ const RegisterPage = () => {
             name="username"
             value={formData.username}
             onChange={onChange}
-            placeholder="username"
+            placeholder="Username"
           />
           <FormInput
             type="password"
             name="password"
             value={formData.password}
             onChange={onChange}
-            placeholder="password"
+            placeholder="Password"
           />
           <FormInput
             type="password"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={onChange}
-            placeholder="confirm password"
+            placeholder="Confirm Password"
           />
           <FormButton>Register</FormButton>
           <div className="flex justify-between text-sm mt-2">

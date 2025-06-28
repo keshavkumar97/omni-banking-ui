@@ -2,7 +2,11 @@ const FormInput = ({ type, name, placeholder, value, onChange }) => {
   return (
     <>
       <div className="form-group">
-        {name && <label className="label" htmlFor={name}>{name[0].toUpperCase() + name.slice(1)}</label>}
+        {placeholder && (
+          <label className="label" htmlFor={placeholder}>
+            {placeholder[0].toUpperCase() + placeholder.slice(1)}
+          </label>
+        )}
         <input
           type={type}
           name={name}
