@@ -19,6 +19,7 @@ const RegisterPage = () => {
 
   // console.log(formData.username);
   console.log(process.env.REACT_APP_AUTH_API_BASE_URL)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
@@ -28,7 +29,7 @@ const RegisterPage = () => {
 
     try {
       const response = await registerUser({
-        username: formData.username,
+        userName: formData.username,
         password: formData.password,
       });
       if (response.status === 200) {

@@ -15,7 +15,7 @@ const LoginPage = () => {
       <div className="w-[45%] bg-gray-100 flex items-center justify-center">
         <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-md space-y-4">
           <h2 className="text-2xl font-bold text-center text-gray-800">
-            Create Account
+            Account Login
           </h2>
           <FormInput type="text" name="username" placeholder="username" />
           <FormInput type="password" name="password" placeholder="password" />
