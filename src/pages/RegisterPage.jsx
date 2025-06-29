@@ -38,7 +38,7 @@ const RegisterPage = () => {
       console.log(error);
       alert(
         `All Registration Fields are Mandatory! \n${
-          erro?.response?.data?.message || "Something went wrong!"
+          error?.response?.data?.message || "Something went wrong!"
         }`
       );
     }
